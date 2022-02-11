@@ -25,19 +25,26 @@ public class PropertiesToYml {
     public static void main(String[] args) {
         properties2Yml();
 
+        List<File> propertieFile = new ArrayList<>();
         //去重
-        String containFileName = "application.yml";
+        ymlDistinct(propertieFile);
+        //删除properties文件
+        for (File file : propertieFile) {
+            file.delete();
+        }
+    }
+
+    private static void ymlDistinct(List<File> propertieFile) {
         List<File> list = new ArrayList<>();
-
+        String containFileName = "application.yml";
         getAllDirs("E:\\code\\bilin-java2", containFileName, list);
-
         for (File dir : list) {
             File propertiesFile = getFileByFileNameInDir(dir, "projectGlobal.properties");
             File ymlFile = getFileByFileNameInDir(dir, "application.yml");
             if (propertiesFile != null && ymlFile != null) {
                 yaml2Prop(ymlFile.getPath());
                 properties2Yaml(ymlFile.getPath(), ymlFile.getPath(), false);
-                propertiesFile.delete();
+                propertieFile.add(propertiesFile);
             }
         }
     }
