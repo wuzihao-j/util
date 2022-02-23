@@ -56,9 +56,9 @@ public class SortProperties extends Properties {
             String str1 = o1.toString();
             String str2 = o2.toString();
             if (startwith(str1, firstStr)) {
-                return order(str1, str2, firstStr);
+                return -1;
             } else if (startwith(str2, firstStr)) {
-                return order(str1, str2, firstStr);
+                return 1;
             } else {
                 return str1.compareTo(str2);
             }
@@ -82,15 +82,5 @@ public class SortProperties extends Properties {
         }
         return false;
     }
-
-    public int order(String str1, String str2, List<String> list) {
-        for (String s : list) {
-            if (str1.startsWith(s)) {
-                return -1;
-            } else if (str2.startsWith(s)) {
-                return 1;
-            }
-        }
-        return -1;
-    }
+    
 }
