@@ -32,12 +32,13 @@ public class UDBPasswordAndMEData {
             writeFile.createNewFile();
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(writeFile));
             //key:userId, value:密码相关数据
-            Map<Long, String> pwdMap = Files.readLines(fileEntry.getValue(), Charset.defaultCharset()).stream().collect(Collectors.toMap(str -> Long.parseLong(str.split(",")[1]),
+            Map<Long, String> pwdMap = Files.readLines(fileEntry.getValue(), Charset.defaultCharset()).stream().map(str -> str.replaceAll("\"", "")).collect(Collectors.toMap(str -> Long.parseLong(str.split(",")[1]),
                     str -> str));
             //把me号数据放到map  key:userId  value:me号
             List<String> meIdLines = Files.readLines(new File("F:\\密码-me号数据\\" + EVN + "\\me号\\Hujiao_USER_BL_ID_" + fileEntry.getKey() + ".csv"), Charset.defaultCharset());
 
             for (String meIdLine : meIdLines) {
+                meIdLine = meIdLine.replaceAll("\"", "");
                 String[] split = meIdLine.split(",");
                 String userId = split[0];
                 String meId = split[1];
@@ -56,7 +57,7 @@ public class UDBPasswordAndMEData {
     private static Map<Integer, File> listPasswordFile() {
         Map<Integer, File> fileMap = new HashMap<>();
         String dirName = "F:\\密码-me号数据\\" + EVN + "\\密码\\";
-        String prefix = "Hujiao_USER_PASSWORD_";
+        String prefix = "USER_PASSWORD_";
         for (int i = 0; i < 100; i++) {
             File file = new File(dirName + prefix + i + ".csv");
             if (file.exists()) {

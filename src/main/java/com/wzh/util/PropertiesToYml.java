@@ -39,7 +39,7 @@ public class PropertiesToYml {
         String containFileName = "application.yml";
         getAllDirs("E:\\code\\bilin-java2", containFileName, list);
         for (File dir : list) {
-            File propertiesFile = getFileByFileNameInDir(dir, "projectGlobal.properties");
+            File propertiesFile = getFileByFileNameInDir(dir, "application.properties");
             File ymlFile = getFileByFileNameInDir(dir, "application.yml");
             if (propertiesFile != null && ymlFile != null) {
                 yaml2Prop(ymlFile.getPath());
@@ -56,7 +56,7 @@ public class PropertiesToYml {
         getAllDirs("E:\\code\\bilin-java2", containFileName, list);
 
         for (File dir : list) {
-            File propertiesFile = getFileByFileNameInDir(dir, "projectGlobal.properties");
+            File propertiesFile = getFileByFileNameInDir(dir, "application.properties");
             File ymlFile = getFileByFileNameInDir(dir, "application.yml");
             if (propertiesFile != null && ymlFile != null) {
                 properties2Yaml(propertiesFile.getPath(), ymlFile.getPath(), true);
@@ -75,7 +75,7 @@ public class PropertiesToYml {
         }
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(outFile, append), Charset.forName(ENCODING));
-            outputStreamWriter.write("\n#projectGlobal.properties 配置");
+            outputStreamWriter.write("\n#application.properties 配置");
             outputStreamWriter.close();
 
             YAMLFactory yamlFactory = new YAMLFactory();

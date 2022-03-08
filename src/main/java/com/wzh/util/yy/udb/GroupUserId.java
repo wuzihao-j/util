@@ -20,6 +20,7 @@ public class GroupUserId {
         String line = br.readLine();
         Map<Integer, BufferedWriter> bufferedWriterMap = listPasswordFile();
         while (StringUtils.isNotEmpty(line)) {
+            line = line.replaceAll("\"", "");
             String[] split = line.split(",");
             String userId = split[0];
             String meId = split[1];
