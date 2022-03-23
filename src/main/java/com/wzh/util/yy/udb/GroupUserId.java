@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class GroupUserId {
 
-    private static final String EVN = "测试";
+    private static final String EVN = "生产";
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File("F:\\密码-me号数据\\" + EVN + "\\Hujiao_USER_BL_ID.csv")), "UTF-8"));//构造一个BufferedReader类来读取文件

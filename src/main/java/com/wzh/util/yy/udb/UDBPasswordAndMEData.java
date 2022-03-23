@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  */
 public class UDBPasswordAndMEData {
 
-    private static final String EVN = "测试";
+    private static final String EVN = "生产";
 
     public static void main(String[] args) throws IOException {
         //遍历密码文件
@@ -57,7 +57,7 @@ public class UDBPasswordAndMEData {
     private static Map<Integer, File> listPasswordFile() {
         Map<Integer, File> fileMap = new HashMap<>();
         String dirName = "F:\\密码-me号数据\\" + EVN + "\\密码\\";
-        String prefix = "USER_PASSWORD_";
+        String prefix = "Hujiao_USER_PASSWORD_";
         for (int i = 0; i < 100; i++) {
             File file = new File(dirName + prefix + i + ".csv");
             if (file.exists()) {
